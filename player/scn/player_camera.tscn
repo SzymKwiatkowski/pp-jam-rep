@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfmwqwc7wh1vu"]
+[gd_scene load_steps=3 format=3 uid="uid://dfmwqwc7wh1vu"]
 
 [ext_resource type="Script" path="res://player/src/player_camera.gd" id="1_tlvvo"]
+[ext_resource type="Texture2D" uid="uid://cqt3wuohavqh8" path="res://player/ast/fog.png" id="2_b76ku"]
 
 [node name="PlayerCamera" type="Camera2D"]
 script = ExtResource("1_tlvvo")
+
+[node name="Fog" type="Sprite2D" parent="."]
+z_index = 10
+texture = ExtResource("2_b76ku")
