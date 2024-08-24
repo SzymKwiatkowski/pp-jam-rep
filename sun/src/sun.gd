@@ -6,8 +6,8 @@ signal kill_player
 @export var pivot_y: int = -30
 
 var start_pos = null
-var player_camera_reference = null
-var player_offest = null
+@export var player_camera_reference: PlayerCamera
+@export var player_offest: Vector2
 var sun_distance = 0.0
 var start_y = null
 
