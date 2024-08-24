@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuhluhi1gpc20"]
+
+[ext_resource type="Script" path="res://player/src/player_camera.gd" id="1_tlvvo"]
+
+[node name="PlayerCamera" type="Camera2D"]
+offset = Vector2(0, -270)
+script = ExtResource("1_tlvvo")
