@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 Player="*res://player/src/player.gd"
 Map="*res://map/src/map.gd"
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="world"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
