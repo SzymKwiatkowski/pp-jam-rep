@@ -1,6 +1,7 @@
+class_name PlayerCamera
 extends Camera2D
 
-var to_follow: Node2D
+@export var to_follow: Node2D
 
 
 func _process(delta):
