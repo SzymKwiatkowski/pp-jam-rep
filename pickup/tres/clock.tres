@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dbwfrrk01mot1"]
+
+[ext_resource type="PackedScene" uid="uid://bk1enleffbuw3" path="res://pickup/scn/clock.tscn" id="1_qcb86"]
+[ext_resource type="Script" path="res://pickup/src/item.gd" id="2_7pl3x"]
+
+[resource]
+script = ExtResource("2_7pl3x")
+PropertyKind = 1
+Property = 10
+Scene = ExtResource("1_qcb86")

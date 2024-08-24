@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv1ql1v67shs2"]
+
+[ext_resource type="Script" path="res://pickup/src/pickup.gd" id="1_pigie"]
+[ext_resource type="Resource" uid="uid://dbwfrrk01mot1" path="res://pickup/tres/clock.tres" id="2_5ne8k"]
+
+[node name="Pickup" type="Node2D"]
+script = ExtResource("1_pigie")
+item = ExtResource("2_5ne8k")
