@@ -27,4 +27,5 @@ func _physics_process(delta):
 	move_and_slide()
 
 	if is_on_floor():
+		# Is on floor must be after applying movement with move_and_slide()
 		jump_counter = 2
