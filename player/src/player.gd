@@ -1,4 +1,7 @@
+class_name Player
 extends CharacterBody2D
+
+signal light_contact(position: Vector2)
 
 @export var animation_player: AnimationPlayer
 @export var sprite: Sprite2D
@@ -10,8 +13,10 @@ extends CharacterBody2D
 
 var jump_counter: int = 2
 var jump_request: bool = false
+
 @export var jump_request_expiration_time = 1 # seconds
 
+@onready var ray_cast = $Raycast
 
 func _process(delta):
 	# Expire jump request if
@@ -65,3 +70,11 @@ func _physics_process(delta):
 		elif animation_player.current_animation != "idle" and velocity == Vector2.ZERO:
 			animation_player.play("idle")
 		jump_counter = 2
+
+	#print("Player pos", global_position, global_transform.origin)
+	light_contact.emit(global_position)
+	pass
+
+func die():
+	print("Trying to die")
+	pass
