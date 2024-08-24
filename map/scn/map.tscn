@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6i8a2vrrl138"]
+[gd_scene load_steps=15 format=3 uid="uid://b6i8a2vrrl138"]
 
 [ext_resource type="Script" path="res://map/src/map.gd" id="1_vlb6w"]
+[ext_resource type="PackedScene" uid="uid://c2b0csx0olr05" path="res://sun/scn/sun.tscn" id="2_6r3ww"]
 [ext_resource type="Script" path="res://map/src/tilesets.gd" id="2_fvjaa"]
 [ext_resource type="Texture2D" uid="uid://cfk3amckgvys8" path="res://map/ast/background.png" id="3_o26yf"]
 [ext_resource type="Texture2D" uid="uid://qbv1lgqw1e0x" path="res://map/ast/platform_tile.png" id="4_jtoeo"]
@@ -16,23 +17,32 @@ texture_region_size = Vector2i(960, 640)
 [sub_resource type="TileSet" id="TileSet_o8asq"]
 sources/0 = SubResource("TileSetAtlasSource_sne15")
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f0xjk"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqlne"]
 resource_name = "platform"
 texture = ExtResource("4_jtoeo")
 0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_f0xjk")
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_c76a1"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jssog"]
 resource_name = "wall"
 texture = ExtResource("5_uo36h")
 0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_c76a1")
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_spswy"]
+occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 3
 physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_pqlne")
@@ -57,3 +67,10 @@ layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 131072, 1, 0, 196608,
 
 [node name="Pickup" parent="." instance=ExtResource("6_bmclx")]
 position = Vector2(765, 357)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(1, 0.8, 0, 0.54902)
+
+[node name="Sun" parent="." instance=ExtResource("2_6r3ww")]
+position = Vector2(221, 70)
