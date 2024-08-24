@@ -61,10 +61,8 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
-	# TODO: export to game manager
 	if global_position.y > drop_from_map_threshold:
-		get_parent().queue_free()
-		get_tree().quit()
+		die()
 		
 
 	# Is on floor must be after applying movement with move_and_slide()
@@ -81,4 +79,5 @@ func _physics_process(delta):
 
 func die():
 	print("Trying to die")
-	pass
+	get_tree().change_scene_to_file("res://ui/scn/game_over_screen.tscn")
+
