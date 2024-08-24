@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdaoad5aearq3"]
+
+[ext_resource type="Script" path="res://ui/src/menu.gd" id="1_1ftsq"]
+[ext_resource type="PackedScene" uid="uid://setw8cp370g0" path="res://player/scn/player.tscn" id="2_bwd71"]
+[ext_resource type="PackedScene" uid="uid://b6i8a2vrrl138" path="res://map/scn/map.tscn" id="3_emrg5"]
+[ext_resource type="Texture2D" uid="uid://dl10ogymeks5q" path="res://ui/ast/menu_background.png" id="4_ubio5"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ftsq")
+player_scene = ExtResource("2_bwd71")
+map_scene = ExtResource("3_emrg5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_ubio5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = -60.0
+offset_top = -33.0
+offset_right = 60.0
+offset_bottom = 33.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Play"
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
