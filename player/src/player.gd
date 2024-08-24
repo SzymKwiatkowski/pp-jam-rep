@@ -23,6 +23,9 @@ func _process(delta):
 
 
 func _physics_process(delta):
+	# Fix camera vertically
+	
+	
 	# Apply gravity
 	if not is_on_floor():
 		if velocity.y > 0:
