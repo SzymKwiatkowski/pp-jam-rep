@@ -16,8 +16,6 @@ var jump_request: bool = false
 
 @export var jump_request_expiration_time = 1 # seconds
 
-@onready var ray_cast = $Raycast
-
 func _process(delta):
 	# Expire jump request if
 	if jump_request:
