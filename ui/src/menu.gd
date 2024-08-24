@@ -24,6 +24,7 @@ func _on_play_pressed():
 	var main_instance = get_parent()
 	player_instance.light_contact.connect(sun_instance.light_contact)
 	sun_instance.kill_player.connect(player_instance.die)
+	sun_instance.set_position(Vector2(20, -340))
 	main_instance.add_child(map_instance)
 	main_instance.add_child(player_instance)
 	main_instance.add_child(sun_instance)
