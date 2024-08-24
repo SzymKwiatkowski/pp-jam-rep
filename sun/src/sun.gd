@@ -2,13 +2,16 @@ extends Node2D
 
 signal kill_player
 
-@export var sun_speed = 50
-@export var pivot_x: int = 440
-@export var pivot_y: int = 320
+@export var sun_speed = 3
+@export var pivot_y: int = -30
 
 var start_pos = null
+var player_camera_reference = null
+var player_offest = null
+var sun_distance = 0.0
+var start_y = null
 
-@onready var pivot_point: Vector2 = Vector2(pivot_x, pivot_y)
+var pivot_offset: Vector2 = Vector2(0, pivot_y)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,14 +21,19 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if start_pos == null:
-		start_pos = global_position
+	var sun_base_position = player_camera_reference.global_position + player_offest
+	var pivot_point = player_camera_reference.global_position + pivot_offset
 
-	var distance = delta/sun_speed
-	position = global_position
-	position = pivot_point + (position - pivot_point).rotated(distance)
+	sun_distance += delta/sun_speed
+	position = pivot_point + (sun_base_position - pivot_point).rotated(sun_distance)
 
 	global_position = position
+
+	if start_y == null:
+		start_y = position.y
+	else:
+		if position.y > start_y:
+			kill_player.emit()
 
 
 func light_contact(target_position):
@@ -40,5 +48,5 @@ func light_contact(target_position):
 	if !result.has("collider"):
 		return false
 
-	if result.collider is Player:
-		kill_player.emit()
+	#if result.collider is Player:
+		#kill_player.emit()
