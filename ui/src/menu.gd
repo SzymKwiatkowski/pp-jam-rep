@@ -1,6 +1,10 @@
 extends Control
 
 
+func _ready():
+	$Sprite2D/AnimationPlayer.play("flash")
+
+
 func _on_play_level_1_pressed():
 	display_loading()
 	load_level("res://level/scn/level_1.tscn")
