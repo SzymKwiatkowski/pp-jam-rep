@@ -1,4 +1,7 @@
+class_name Player
 extends CharacterBody2D
+
+signal light_contact(position: Vector2)
 
 @export var animation_player: AnimationPlayer
 @export var sprite: Sprite2D
@@ -10,8 +13,10 @@ extends CharacterBody2D
 
 var jump_counter: int = 2
 var jump_request: bool = false
+
 @export var jump_request_expiration_time = 1 # seconds
 
+@onready var ray_cast = $Raycast
 
 func _process(delta):
 	# Expire jump request if
@@ -66,14 +71,10 @@ func _physics_process(delta):
 			animation_player.play("idle")
 		jump_counter = 2
 
-func light_contact(position) -> bool:
-	var space_state = get_world_2d().direct_space_state
-	# use global coordinates, not local to node
-	var query = PhysicsRayQueryParameters2D.create(global_position, position,
-		collision_mask, [self])
-	var result = space_state.intersect_ray(query)
-	
-	if result == null:
-		return false
-	
-	return true
+	#print("Player pos", global_position, global_transform.origin)
+	light_contact.emit(global_position)
+	pass
+
+func die():
+	print("Trying to die")
+	pass

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://setw8cp370g0" path="res://player/scn/player.tscn" id="2_bwd71"]
 [ext_resource type="PackedScene" uid="uid://cuhluhi1gpc20" path="res://player/scn/player_camera.tscn" id="3_cepty"]
 [ext_resource type="PackedScene" uid="uid://b6i8a2vrrl138" path="res://map/scn/map.tscn" id="3_emrg5"]
+[ext_resource type="PackedScene" uid="uid://c2b0csx0olr05" path="res://sun/scn/sun.tscn" id="4_iiaa1"]
 [ext_resource type="Texture2D" uid="uid://dl10ogymeks5q" path="res://ui/ast/menu_background.png" id="4_ubio5"]
 
 [node name="Menu" type="Control"]
@@ -17,6 +18,7 @@ script = ExtResource("1_1ftsq")
 player_scene = ExtResource("2_bwd71")
 player_camera = ExtResource("3_cepty")
 map_scene = ExtResource("3_emrg5")
+sun_scene = ExtResource("4_iiaa1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("4_ubio5")

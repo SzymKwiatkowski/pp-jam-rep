@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2b0csx0olr05"]
+[gd_scene load_steps=6 format=3 uid="uid://c2b0csx0olr05"]
 
 [ext_resource type="Script" path="res://sun/src/sun.gd" id="1_hfhpa"]
 [ext_resource type="Texture2D" uid="uid://ddhc8m3401xvj" path="res://sun/ast/sun.png" id="2_hhxjr"]
@@ -12,7 +12,12 @@ height = 16384
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_msiw5"]
+radius = 195.164
+
 [node name="Sun" type="Node2D"]
+light_mask = 3
+visibility_layer = 3
 script = ExtResource("1_hfhpa")
 
 [node name="Light" type="PointLight2D" parent="."]
@@ -22,3 +27,12 @@ texture = SubResource("GradientTexture2D_tjob6")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_hhxjr")
+
+[node name="SunArea" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="SunCollision" type="CollisionShape2D" parent="SunArea"]
+light_mask = 3
+visibility_layer = 3
+shape = SubResource("CircleShape2D_msiw5")
