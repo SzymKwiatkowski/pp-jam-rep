@@ -1,7 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdaoad5aearq3"]
+[gd_scene load_steps=7 format=3 uid="uid://cdaoad5aearq3"]
 
 [ext_resource type="Script" path="res://ui/src/menu.gd" id="1_1ftsq"]
-[ext_resource type="Texture2D" uid="uid://dl10ogymeks5q" path="res://ui/ast/menu_background.png" id="4_ubio5"]
+[ext_resource type="Texture2D" uid="uid://dkvnr5c4sy1uv" path="res://ui/ast/menu_background.png" id="4_ubio5"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3xujd"]
+diffuse_texture = ExtResource("4_ubio5")
+
+[sub_resource type="Animation" id="Animation_630pp"]
+resource_name = "flash"
+length = 3.00001
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2, 2.08333, 2.16667, 2.25, 2.33333, 2.41667, 2.5, 2.58333, 2.66667, 2.75, 2.83333, 2.91667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_f3p55"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_347pk"]
+_data = {
+"RESET": SubResource("Animation_f3p55"),
+"flash": SubResource("Animation_630pp")
+}
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -15,7 +57,13 @@ grow_vertical = 2
 script = ExtResource("1_1ftsq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("4_ubio5")
+texture = SubResource("CanvasTexture_3xujd")
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_347pk")
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -52,6 +100,7 @@ text = "Quit"
 
 [node name="Label" type="Label" parent="."]
 visible = false
+layout_mode = 0
 offset_left = -35.0
 offset_top = 5.0
 offset_right = 40.0

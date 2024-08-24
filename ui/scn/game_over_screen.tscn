@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://qilnccrte3pl"]
+[gd_scene load_steps=4 format=3 uid="uid://qilnccrte3pl"]
 
 [ext_resource type="Script" path="res://ui/src/game_over_screen.gd" id="1_1kg8l"]
-[ext_resource type="Texture2D" uid="uid://dl10ogymeks5q" path="res://ui/ast/menu_background.png" id="1_xj0nd"]
+[ext_resource type="Texture2D" uid="uid://iw8dv3vevrk0" path="res://ui/src/dead.png" id="2_eth5f"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_haern"]
+diffuse_texture = ExtResource("2_eth5f")
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -15,9 +18,10 @@ grow_vertical = 2
 script = ExtResource("1_1kg8l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_xj0nd")
+texture = SubResource("CanvasTexture_haern")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
 offset_left = -60.0
 offset_top = -33.0
 offset_right = 60.0
