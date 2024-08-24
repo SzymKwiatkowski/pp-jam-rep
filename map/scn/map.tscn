@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://map/src/map.gd" id="1_vlb6w"]
 [ext_resource type="Script" path="res://map/src/tilesets.gd" id="2_fvjaa"]
 [ext_resource type="Texture2D" uid="uid://liypl53n4q85" path="res://map/ast/sheet.png" id="3_cq8af"]
-[ext_resource type="Texture2D" uid="uid://x7f38a442wtv" path="res://map/ast/paralax.png" id="7_baj8d"]
-[ext_resource type="Texture2D" uid="uid://cuslnldaip6gu" path="res://map/ast/paralax1.png" id="7_kneqc"]
+[ext_resource type="Texture2D" uid="uid://cypgvsme8gfc5" path="res://map/ast/paralax.png" id="7_baj8d"]
+[ext_resource type="Texture2D" uid="uid://cd7xk5vv602bm" path="res://map/ast/paralax1.png" id="7_kneqc"]
 [ext_resource type="Texture2D" uid="uid://d3awsgevwa2ok" path="res://map/ast/paralax2.png" id="8_mjkfd"]
 [ext_resource type="Texture2D" uid="uid://bd1358km3m6dv" path="res://map/ast/paralax3.png" id="9_3noki"]
 
