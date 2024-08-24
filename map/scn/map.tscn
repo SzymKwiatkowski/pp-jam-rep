@@ -38,6 +38,7 @@ sources/0 = SubResource("TileSetAtlasSource_pqlne")
 sources/1 = SubResource("TileSetAtlasSource_jssog")
 
 [node name="Map" type="Node2D"]
+position = Vector2(-30, -580)
 script = ExtResource("1_vlb6w")
 
 [node name="Node2D" type="Node2D" parent="."]
