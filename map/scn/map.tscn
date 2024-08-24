@@ -23,14 +23,10 @@ texture = ExtResource("4_jtoeo")
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_c76a1"]
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jssog"]
 resource_name = "wall"
 texture = ExtResource("5_uo36h")
 0:0/0 = 0
-0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_c76a1")
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -59,9 +55,13 @@ position = Vector2(765, 357)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
-color = Color(1, 0.8, 0, 0.54902)
+color = Color(0.705973, 0.872078, 0.781661, 0.54902)
 
 [node name="Sun" parent="." instance=ExtResource("2_6r3ww")]
+position = Vector2(179, 93)
+sun_speed = 50
+pivot_x = 440
+pivot_y = 320
 position = Vector2(221, 70)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]

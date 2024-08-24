@@ -65,3 +65,15 @@ func _physics_process(delta):
 		elif animation_player.current_animation != "idle" and velocity == Vector2.ZERO:
 			animation_player.play("idle")
 		jump_counter = 2
+
+func light_contact(position) -> bool:
+	var space_state = get_world_2d().direct_space_state
+	# use global coordinates, not local to node
+	var query = PhysicsRayQueryParameters2D.create(global_position, position,
+		collision_mask, [self])
+	var result = space_state.intersect_ray(query)
+	
+	if result == null:
+		return false
+	
+	return true
