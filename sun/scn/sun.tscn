@@ -7,10 +7,9 @@
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tjob6"]
 gradient = SubResource("Gradient_u8c3m")
-width = 16384
-height = 16384
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_msiw5"]
 radius = 195.164
@@ -21,13 +20,18 @@ visibility_layer = 3
 script = ExtResource("1_hfhpa")
 
 [node name="Light" type="PointLight2D" parent="."]
-energy = 5.0
+light_mask = 3
+visibility_layer = 3
+scale = Vector2(26.727, 25.816)
+range_layer_min = -512
+range_layer_max = 512
 shadow_enabled = true
 shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_tjob6")
 height = 100.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
+light_mask = 0
 texture = ExtResource("2_hhxjr")
 
 [node name="SunArea" type="Area2D" parent="."]
