@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhejl5njwao78"]
+
+[ext_resource type="PackedScene" uid="uid://b6i8a2vrrl138" path="res://map/scn/map.tscn" id="1_p5qx3"]
+[ext_resource type="PackedScene" uid="uid://c2b0csx0olr05" path="res://sun/scn/sun.tscn" id="2_kera1"]
+[ext_resource type="PackedScene" uid="uid://setw8cp370g0" path="res://player/scn/player.tscn" id="3_y2hvs"]
+[ext_resource type="PackedScene" uid="uid://dfmwqwc7wh1vu" path="res://player/scn/player_camera.tscn" id="4_0xb3m"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Map" parent="." instance=ExtResource("1_p5qx3")]
+
+[node name="Sun" parent="." node_paths=PackedStringArray("player_camera_reference") instance=ExtResource("2_kera1")]
+player_camera_reference = NodePath("../PlayerCamera")
+player_offest = Vector2(-300, -200)
+
+[node name="Player" parent="." instance=ExtResource("3_y2hvs")]
+
+[node name="PlayerCamera" parent="." node_paths=PackedStringArray("to_follow") instance=ExtResource("4_0xb3m")]
+position = Vector2(500, 200)
+to_follow = NodePath("../Player")
