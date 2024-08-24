@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0e2mny3b35x4"]
+
+[ext_resource type="Script" path="res://endgame-marker/src/coffin.gd" id="1_3d3uu"]
+[ext_resource type="Texture2D" uid="uid://bmy86wry8y665" path="res://endgame-marker/ast/coffin.png" id="1_4mhfr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ehycf"]
+radius = 32.0
+height = 128.0
+
+[node name="Coffin" type="Area2D"]
+script = ExtResource("1_3d3uu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_4mhfr")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ehycf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
