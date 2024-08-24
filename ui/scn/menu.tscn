@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdaoad5aearq3"]
+[gd_scene load_steps=6 format=3 uid="uid://cdaoad5aearq3"]
 
 [ext_resource type="Script" path="res://ui/src/menu.gd" id="1_1ftsq"]
 [ext_resource type="PackedScene" uid="uid://setw8cp370g0" path="res://player/scn/player.tscn" id="2_bwd71"]
+[ext_resource type="PackedScene" uid="uid://cuhluhi1gpc20" path="res://player/scn/player_camera.tscn" id="3_cepty"]
 [ext_resource type="PackedScene" uid="uid://b6i8a2vrrl138" path="res://map/scn/map.tscn" id="3_emrg5"]
 [ext_resource type="Texture2D" uid="uid://dl10ogymeks5q" path="res://ui/ast/menu_background.png" id="4_ubio5"]
 
@@ -14,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ftsq")
 player_scene = ExtResource("2_bwd71")
+player_camera = ExtResource("3_cepty")
 map_scene = ExtResource("3_emrg5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
