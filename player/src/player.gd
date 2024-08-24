@@ -13,6 +13,7 @@ signal light_contact(position: Vector2)
 
 var jump_counter: int = 2
 var jump_request: bool = false
+var drop_from_map_threshold = 500
 
 @export var jump_request_expiration_time = 1 # seconds
 
@@ -60,6 +61,11 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
+	# TODO: export to game manager
+	if global_position.y > drop_from_map_threshold:
+		get_parent().queue_free()
+		get_tree().quit()
+		
 
 	# Is on floor must be after applying movement with move_and_slide()
 	if is_on_floor():
