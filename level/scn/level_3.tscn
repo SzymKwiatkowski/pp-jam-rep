@@ -1,20 +1,22 @@
 [gd_scene load_steps=6 format=3 uid="uid://c5us4st6qjnv3"]
 
 [ext_resource type="Script" path="res://level/scn/level.gd" id="1_2j1hp"]
-[ext_resource type="PackedScene" uid="uid://b6i8a2vrrl138" path="res://map/scn/map.tscn" id="1_cup1x"]
 [ext_resource type="PackedScene" uid="uid://c2b0csx0olr05" path="res://sun/scn/sun.tscn" id="2_sefrd"]
 [ext_resource type="PackedScene" uid="uid://setw8cp370g0" path="res://player/scn/player.tscn" id="3_yuwa3"]
 [ext_resource type="PackedScene" uid="uid://dfmwqwc7wh1vu" path="res://player/scn/player_camera.tscn" id="4_4lf3l"]
+[ext_resource type="PackedScene" uid="uid://dc0tn5j3ul4gw" path="res://map/scn/map3.tscn" id="5_lwj2o"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_2j1hp")
 
-[node name="Map" parent="." instance=ExtResource("1_cup1x")]
-
 [node name="Sun" parent="." instance=ExtResource("2_sefrd")]
+position = Vector2(-203, -378)
 
 [node name="Player" parent="." instance=ExtResource("3_yuwa3")]
+z_index = 100
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("to_follow") instance=ExtResource("4_4lf3l")]
 position = Vector2(500, 200)
 to_follow = NodePath("../Player")
+
+[node name="Map" parent="." instance=ExtResource("5_lwj2o")]
