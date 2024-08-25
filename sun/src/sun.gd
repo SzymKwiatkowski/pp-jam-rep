@@ -1,3 +1,4 @@
+class_name Sun
 extends Node2D
 
 signal kill_player

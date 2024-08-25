@@ -5,7 +5,6 @@ signal light_contact(position: Vector2)
 
 @export var animation_player: AnimationPlayer
 @export var sprite: Sprite2D
-
 @export var speed = 300.0
 @export var jump_velocity = -500.0
 @export var ascend_gravity = 1100
@@ -19,6 +18,7 @@ var drop_from_map_threshold = 500
 
 @onready var hp_bar = $HealthBar
 
+var sun_area: Area2D
 
 func _ready():
 	hp_bar.setup(100)
@@ -32,9 +32,11 @@ func _process(delta):
 			jump_request = false
 			jump_request_expiration_time = 0.1
 
-	# TEST: Take damage
-	#if hp_bar._hp > 50:
-	#	hp_bar.take_damage(1)
+	if is_exposed():
+		hp_bar.take_damage(1)
+	
+	if hp_bar.value == 0:
+		die()
 
 
 func _physics_process(delta):
@@ -86,3 +88,26 @@ func _physics_process(delta):
 func die():
 	get_tree().change_scene_to_file("res://ui/scn/game_over_screen.tscn")
 
+
+func is_exposed():
+	if not sun_area:
+		return false
+	var space_state = get_world_2d().direct_space_state
+	#query = PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(0, 100))
+	#var collision = get_world_2d().direct_space_state.intersect_ray(query)
+
+	var query = PhysicsRayQueryParameters2D.create(
+		global_position, sun_area.global_position)
+	query.collide_with_areas = true
+	var result = space_state.intersect_ray(query)
+
+	if not result:
+		return false
+	
+	if !result.has("collider"):
+		return false
+	
+	if result.collider == sun_area:
+		return true
+
+	return false
