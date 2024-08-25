@@ -18,6 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_av2ox")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = SubResource("CanvasTexture_fyfeg")
 vframes = 2
 
