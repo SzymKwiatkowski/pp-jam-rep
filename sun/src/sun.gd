@@ -2,7 +2,7 @@ extends Node2D
 
 signal kill_player
 
-@export var sun_speed = 3.0
+@export var sun_speed = 1.5
 var sun_angle = 0.0
 var pivot_point = Vector2.ZERO
 
@@ -13,18 +13,16 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	var sun_angle_new = 0.0
+	var sun_new_pos = 0.0
 	if Input.is_action_just_pressed("scroll_up"):
-		sun_angle_new += sun_speed*5.0
+		sun_new_pos += sun_speed*5.0
 	elif Input.is_action_just_pressed("scroll_down"):
-		sun_angle_new -= sun_speed*5.0
+		sun_new_pos -= sun_speed*5.0
 	else:
-		sun_angle_new += sun_speed
+		sun_new_pos += sun_speed
 	
-	sun_angle += deg_to_rad(sun_angle_new*delta)
-	var desired_position = pivot_point + (position-pivot_point).rotated(deg_to_rad(sun_angle_new*delta))
-	desired_position.y = desired_position.y.MAX()
-	position = desired_position
+	
+	position.x += sun_new_pos
 	
 	if position.y > 0:
 		kill_player.emit()
