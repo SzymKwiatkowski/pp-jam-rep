@@ -2,38 +2,32 @@ extends Node2D
 
 signal kill_player
 
-@export var sun_speed = 3
-@export var pivot_y: int = -30
+@export var sun_speed = 3.0
+var sun_angle = 0.0
+var pivot_point = Vector2.ZERO
 
-var start_pos = null
-@export var player_camera_reference: PlayerCamera
-@export var player_offest: Vector2
-var sun_distance = 0.0
-var start_y = null
-
-var pivot_offset: Vector2 = Vector2(0, pivot_y)
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var sun_base_position = player_camera_reference.global_position + player_offest
-	var pivot_point = player_camera_reference.global_position + pivot_offset
-
-	sun_distance += delta/sun_speed
-	position = pivot_point + (sun_base_position - pivot_point).rotated(sun_distance)
-
-	global_position = position
-
-	if start_y == null:
-		start_y = position.y
+func _physics_process(delta):
+	var sun_angle_new = 0.0
+	if Input.is_action_just_pressed("scroll_up"):
+		sun_angle_new += sun_speed*5.0
+	elif Input.is_action_just_pressed("scroll_down"):
+		sun_angle_new -= sun_speed*5.0
 	else:
-		if position.y > start_y:
-			kill_player.emit()
+		sun_angle_new += sun_speed
+	
+	sun_angle += deg_to_rad(sun_angle_new*delta)
+	var desired_position = pivot_point + (position-pivot_point).rotated(deg_to_rad(sun_angle_new*delta))
+	desired_position.y = desired_position.y.MAX()
+	position = desired_position
+	
+	if position.y > 0:
+		kill_player.emit()
 
 
 func light_contact(target_position):

@@ -1,19 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://8vs5kcmq142k"]
+[gd_scene load_steps=6 format=3 uid="uid://8vs5kcmq142k"]
 
+[ext_resource type="Script" path="res://level/scn/level.gd" id="1_s8ywo"]
 [ext_resource type="PackedScene" uid="uid://c2b0csx0olr05" path="res://sun/scn/sun.tscn" id="2_5e455"]
 [ext_resource type="PackedScene" uid="uid://setw8cp370g0" path="res://player/scn/player.tscn" id="3_iteo3"]
 [ext_resource type="PackedScene" uid="uid://dfmwqwc7wh1vu" path="res://player/scn/player_camera.tscn" id="4_6clro"]
 [ext_resource type="PackedScene" uid="uid://gn7jl5s0pka1" path="res://map/scn/map1.tscn" id="4_yqhop"]
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_s8ywo")
 
 [node name="Map" parent="." instance=ExtResource("4_yqhop")]
 
-[node name="Sun" parent="." node_paths=PackedStringArray("player_camera_reference") instance=ExtResource("2_5e455")]
-position = Vector2(96, 203)
-sun_speed = 20
-player_camera_reference = NodePath("../PlayerCamera")
-player_offest = Vector2(-300, -200)
+[node name="Sun" parent="." instance=ExtResource("2_5e455")]
+position = Vector2(-445, -17)
 
 [node name="Player" parent="." instance=ExtResource("3_iteo3")]
 position = Vector2(124, 342)
