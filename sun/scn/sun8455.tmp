@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2b0csx0olr05"]
+[gd_scene load_steps=6 format=3 uid="uid://c2b0csx0olr05"]
 
 [ext_resource type="Script" path="res://sun/src/sun.gd" id="1_hfhpa"]
 [ext_resource type="Texture2D" uid="uid://ddhc8m3401xvj" path="res://sun/ast/sun.png" id="2_hhxjr"]
@@ -15,10 +15,17 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.1, 0.9)
 metadata/_snap_enabled = true
 
-[node name="Sun" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ex6lu"]
+
+[node name="Sun" type="CharacterBody2D"]
 light_mask = 3
 visibility_layer = 3
+motion_mode = 1
+platform_floor_layers = 0
 script = ExtResource("1_hfhpa")
+sun_speed = null
+pivot_y = null
+player_offest = null
 
 [node name="Light" type="PointLight2D" parent="."]
 light_mask = 3
@@ -29,8 +36,6 @@ energy = 0.5
 range_layer_min = -512
 range_layer_max = 512
 shadow_enabled = true
-shadow_color = Color(0, 0, 0, 1)
-shadow_filter_smooth = 1.0
 shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_tjob6")
 height = 100.0
@@ -38,3 +43,9 @@ height = 100.0
 [node name="Sprite" type="Sprite2D" parent="."]
 light_mask = 0
 texture = ExtResource("2_hhxjr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ex6lu")
+disabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
