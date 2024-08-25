@@ -2,16 +2,16 @@ extends ProgressBar
 
 @onready var _damage_bar: ProgressBar = $ProgressBar
 @onready var _damage_timer: Timer = $Timer
-var _hp = -1
+var _hp: float = -1
 
 
-func setup(hp: int):
+func setup(hp: float):
 	_hp = hp
 	value = _hp
 	_damage_bar.value = _hp
 
 
-func take_damage(damage: int):
+func take_damage(damage: float):
 	_hp -= damage
 	value = _hp
 	_damage_timer.start(0.1)
