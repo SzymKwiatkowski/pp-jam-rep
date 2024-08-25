@@ -33,7 +33,7 @@ func _process(delta):
 			jump_request_expiration_time = 0.1
 
 	if is_exposed():
-		hp_bar.take_damage(1)
+		hp_bar.take_damage(0.25)
 	
 	if hp_bar.value == 0:
 		die()

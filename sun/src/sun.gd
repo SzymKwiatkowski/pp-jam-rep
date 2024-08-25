@@ -16,9 +16,9 @@ func _ready():
 func _physics_process(delta):
 	var sun_new_pos = 0.0
 	if Input.is_action_just_pressed("scroll_up"):
-		sun_new_pos += sun_speed*5.0
+		sun_new_pos += sun_speed*5.0*10
 	elif Input.is_action_just_pressed("scroll_down"):
-		sun_new_pos -= sun_speed*5.0
+		sun_new_pos -= sun_speed*5.0*10
 	else:
 		sun_new_pos += sun_speed
 	
